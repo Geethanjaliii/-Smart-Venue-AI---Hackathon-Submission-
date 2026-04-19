@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Venue AI - Command Center</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Main Sidebar Navigation -->
+        <aside class="sidebar glass-panel">
+            <div class="brand">
+                <i class="fa-solid fa-satellite-dish"></i>
+                Smart Venue AI
+            </div>
+            
+            <ul class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Overview
+                </a>
+                <a href="#" class="nav-item" data-target="venue-heatmap">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    Live Heatmap
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                    Crowd Control
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-bell"></i>
+                    Alerts & Incidents
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </ul>
+        </aside>
+
+        <!-- Main Dashboard Content -->
+        <main class="main-content">
+            <!-- Top Navigation Bar -->
+            <header class="top-nav glass-panel">
+                <div class="date-time" id="live-clock">
+                    --:--:--
+                </div>
+                <div class="user-profile">
+                    <div style="text-align: right;">
+                        <div style="font-weight: 600; font-size: 0.95rem;">Admin Operator</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Command Center</div>
+                    </div>
+                    <div class="avatar">AO</div>
+                </div>
+            </header>
+
+            <!-- Dashboard Grid Area -->
+            <section class="dashboard-grid">
+                <!-- Top Key Metrics Cards -->
+                <div class="card glass-panel metric-card">
+                    <div class="metric-header">
+                        Active Attendees
+                        <div class="icon-wrapper blue-icon"><i class="fa-solid fa-users"></i></div>
+                    </div>
+                    <div class="metric-value">42,504</div>
+                    <div class="metric-trend trend-down">
+                        <i class="fa-solid fa-arrow-trend-down"></i> 2% from peak
+                    </div>
+                </div>
+
+                <div class="card glass-panel metric-card">
+                    <div class="metric-header">
+                        Avg. Main Gate Wait
+                        <div class="icon-wrapper purple-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                    </div>
+                    <div class="metric-value">14 min</div>
+                    <div class="metric-trend trend-down">
+                        <i class="fa-solid fa-arrow-trend-down"></i> 5 min decrease
+                    </div>
+                </div>
+
+                <div class="card glass-panel metric-card alert-pulse">
+                    <div class="metric-header">
+                        Critical Zones
+                        <div class="icon-wrapper red-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    </div>
+                    <div class="metric-value">2</div>
+                    <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-arrow-trend-up"></i> Immediate Action Req.
+                    </div>
+                </div>
+
+                <div class="card glass-panel metric-card">
+                    <div class="metric-header">
+                        System Health
+                        <div class="icon-wrapper green-icon"><i class="fa-solid fa-server"></i></div>
+                    </div>
+                    <div class="metric-value">99.9%</div>
+                    <div class="metric-trend trend-down" style="color: var(--status-safe)">
+                        <i class="fa-solid fa-check"></i> All sensors online
+                    </div>
+                </div>
+
+                <!-- Main Heatmap Component -->
+                <div class="card glass-panel map-section" id="heatmap-section">
+                    <div class="section-header">
+                        <span class="section-title">Live Venue Heatmap</span>
+                        <div style="display: flex; gap: 8px;">
+                            <span style="font-size: 0.8rem; padding: 4px 10px; background: rgba(59,130,246,0.2); border-radius: 20px; color: var(--accent-blue);">Main Arena</span>
+                            <span style="font-size: 0.8rem; padding: 4px 10px; border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-secondary);">Food Court</span>
+                        </div>
+                    </div>
+                    <div class="map-container" id="venue-heatmap">
+                        <div style="color: var(--text-secondary); opacity: 0.7;">
+                            <i class="fa-solid fa-map" style="font-size: 3rem; margin-bottom: 1rem; display: block; text-align: center;"></i>
+                            Initializing Heatmap Sensors...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Incident Feed Component -->
+                <div class="card glass-panel incident-feed">
+                    <div class="section-header">
+                        <span class="section-title">Live AI Feed</span>
+                    </div>
+                    
+                    <div class="incident-item critical">
+                        <div style="font-weight: 600;">Bottleneck Detected</div>
+                        <div>North Gate Entry queues exceeding maximum threshold (150+ people).</div>
+                        <div class="incident-time">Just now</div>
+                    </div>
+
+                    <div class="incident-item">
+                        <div style="font-weight: 600;">Auto-Reroute Active</div>
+                        <div>Redirecting traffic from Food Court A to Food Court B via push notifications.</div>
+                        <div class="incident-time">2 mins ago</div>
+                    </div>
+
+                    <div class="incident-item">
+                        <div style="font-weight: 600;">Staff Dispatched</div>
+                        <div>Security team delta dispatched to Restroom Block C to clear pathways.</div>
+                        <div class="incident-time">14 mins ago</div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+    "venue": {
+        "id": "vnu-alpha-001",
+        "name": "Global Tech Arena",
+        "maxCapacity": 50000,
+        "operatingHours": {
+            "open": "08:00",
+            "close": "23:00"
+        }
+    },
+    "zones": [
+        {
+            "id": "zone-main",
+            "name": "Main Stage",
+            "capacity": 15000,
+            "type": "event_area",
+            "connectedTo": ["zone-food-n", "zone-hall-a"]
+        },
+        {
+            "id": "zone-food-n",
+            "name": "North Food Court",
+            "capacity": 800,
+            "type": "amenity",
+            "connectedTo": ["zone-main", "zone-restroom-c"]
+        },
+        {
+            "id": "zone-gate-1",
+            "name": "Gate 1",
+            "capacity": 2000,
+            "type": "entry_exit",
+            "connectedTo": ["zone-hall-a"]
+        },
+        {
+            "id": "zone-restroom-c",
+            "name": "Restroom Block C",
+            "capacity": 150,
+            "type": "amenity",
+            "connectedTo": ["zone-food-n", "zone-gate-1"]
+        }
+    ],
+    "historicalBaselines": {
+        "zone-main": { "peakHour": "19:00", "averageDensity": 80 },
+        "zone-food-n": { "peakHour": "13:00", "averageDensity": 65 },
+        "zone-gate-1": { "peakHour": "09:00", "averageDensity": 90 }
+    }
+}

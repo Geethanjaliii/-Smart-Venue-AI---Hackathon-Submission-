@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smart Venue AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <div class="bg-orb orb-one"></div>
+        <div class="bg-orb orb-two"></div>
+        <div class="bg-grid"></div>
+
+        <header class="app-header">
+            <div class="brand-lockup">
+                <div class="brand-mark">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div>
+                    <p class="eyebrow">Live venue operations</p>
+                    <h1>Smart Venue AI</h1>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <span class="status-pill"><span class="status-dot"></span> System live</span>
+                <button id="profile-toggle" class="profile-button" aria-label="Open profile panel">
+                    <span class="profile-avatar">G</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="views-container">
+            <section class="hero-card panel">
+                <div class="hero-copy">
+                    <p class="eyebrow">Hackathon ready dashboard</p>
+                    <h2>One operating surface for crowds, queues, routing, and guest passes.</h2>
+                    <p>Smart Venue AI turns live venue signals into a polished attendee experience with a profile drawer, interactive map, and digital ticket pass.</p>
+                </div>
+                <div class="hero-metrics">
+                    <div class="metric-badge">
+                        <span>Avg entry</span>
+                        <strong id="avg-entry">-- min</strong>
+                    </div>
+                    <div class="metric-badge accent">
+                        <span>Hot zone</span>
+                        <strong id="hot-zone">--</strong>
+                    </div>
+                    <div class="metric-badge">
+                        <span>Venue mood</span>
+                        <strong id="venue-mood">Stable</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="insight-banner panel">
+                <div>
+                    <p class="eyebrow">AI insight</p>
+                    <h3 id="smart-suggestion-text">Loading current venue insight...</h3>
+                </div>
+                <button class="ghost-button" id="suggestion-action">View route</button>
+            </section>
+
+            <section id="view-home" class="view active-view">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Overview</p>
+                        <h3>Live operations snapshot</h3>
+                    </div>
+                    <span class="section-meta" id="last-updated">Updating...</span>
+                </div>
+
+                <div class="stats-grid" id="summary-grid"></div>
+
+                <div class="panel block-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">Queues</p>
+                            <h3>Current wait times</h3>
+                        </div>
+                        <span class="section-meta">API-driven</span>
+                    </div>
+                    <div class="queue-grid loading" id="queue-grid"></div>
+                </div>
+            </section>
+
+            <section id="view-map" class="view">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Map</p>
+                        <h3>Interactive venue map</h3>
+                    </div>
+                    <span class="section-meta">Crowd color-coded</span>
+                </div>
+
+                <div class="map-layout">
+                    <div class="panel map-panel">
+                        <div id="venue-map" class="venue-map"></div>
+                    </div>
+                    <div class="panel zone-panel">
+                        <div class="panel-heading compact">
+                            <div>
+                                <p class="eyebrow">Zones</p>
+                                <h3>Live density</h3>
+                            </div>
+                        </div>
+                        <div id="zone-summary" class="zone-summary"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-alerts" class="view">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Alerts</p>
+                        <h3>Live venue updates</h3>
+                    </div>
+                    <span class="section-meta">Resets automatically</span>
+                </div>
+
+                <div class="alerts-grid" id="alerts-grid">
+                    <article class="alert-card critical">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <div>
+                            <h4>Flow pressure near main stage</h4>
+                            <p>Use the alternate tunnel route to avoid the highest density zone.</p>
+                        </div>
+                    </article>
+                    <article class="alert-card info">
+                        <i class="fa-solid fa-mug-hot"></i>
+                        <div>
+                            <h4>North food court moving quickly</h4>
+                            <p>Queue times are stable, with the shortest waits currently in the north corridor.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="view-ticket" class="view">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Ticket</p>
+                        <h3>Your digital pass</h3>
+                    </div>
+                    <span class="section-meta">Demo mode</span>
+                </div>
+
+                <div id="ticket-pass" class="ticket-pass"></div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav glass-nav">
+            <button class="nav-btn active" data-target="view-home">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </button>
+            <button class="nav-btn" data-target="view-map">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>Map</span>
+            </button>
+            <button class="nav-btn" data-target="view-alerts">
+                <i class="fa-solid fa-bell"></i>
+                <span>Alerts</span>
+            </button>
+            <button class="nav-btn" data-target="view-ticket">
+                <i class="fa-solid fa-qrcode"></i>
+                <span>Ticket</span>
+            </button>
+        </nav>
+    </div>
+
+    <div id="profile-backdrop" class="backdrop"></div>
+    <aside id="profile-drawer" class="profile-drawer" aria-hidden="true">
+        <div class="drawer-header">
+            <div>
+                <p class="eyebrow">Attendee profile</p>
+                <h3>Guest pass overview</h3>
+            </div>
+            <button id="profile-close" class="icon-button" aria-label="Close profile panel">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div id="profile-card" class="profile-card"></div>
+    </aside>
+
+    <script src="services/api.js"></script>
+    <script src="components/crowd.js"></script>
+    <script src="components/map.js"></script>
+    <script src="components/queue.js"></script>
+    <script src="components/profile.js"></script>
+    <script src="components/ticket.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
