@@ -83,7 +83,7 @@ function initHeatmapSimulation() {
     });
 }
 
-// Initialize components when DOM is ready
+//when DOM is ready initialise components
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', event => {
